@@ -7,11 +7,6 @@ package org.orson.offer.sl20;
  */
 public class Solution20 {
 
-    // FIXME
-    // XXX:
-    // DOING
-    // DONE
-    // BUGFIXED
     public boolean IsPopOrder(int [] pushA,int [] popA) {
         int len = pushA.length;
         if(len == 1) {
