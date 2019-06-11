@@ -1,17 +1,16 @@
 package org.orson.algorithm.insert;
 
+//插入排序
 public class InsertSort {
 
 
     public static void main(String[] args) {
         int[] arr = {6, 8, 1, 3, 9, 2};
-        // 6, 8, 1, 3, 9, 2
-        // 6, 8, 1, 3, 9, 2
 
         InsertSort app = new InsertSort();
 
 
-        app.sort_2(arr);
+        app.sort(arr);
 
 
         for(int i = 0; i < arr.length; i++) {
@@ -20,23 +19,27 @@ public class InsertSort {
     }
 
 
-    public void sort_1(int[] arr) {
-        for(int i = 0; i < arr.length - 1; i++) {
+    public void sort(int[] arr) {
+        int point = 0;
+        for(int i = 1; i <= arr.length - 1; i++) {
 
-            int value = arr[i + 1];
-            int offset = i + 1;
-            boolean flag = false;
-            for(int j = offset; j > 0 && (value < arr[j - 1]); j--) {
-                arr[j] = arr[j - 1];
-                offset = j - 1;
-                flag = true;
+            boolean ischange = false;
+            int temp = arr[i];
+
+            for(int j = i; j > 0 && arr[j-1] > temp; j--) {
+                arr[j] = arr[j-1];
+                ischange = true;
+                point = j;
             }
 
-            if(flag) {
-                arr[offset] = value;
+            if(ischange) {
+                arr[point - 1] = temp;
             }
+
         }
     }
+
+
 
 
     public void sort_2(int[] arr) {
@@ -54,5 +57,11 @@ public class InsertSort {
             arr[j] = value;
 
         }
+    }
+
+    private void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 }

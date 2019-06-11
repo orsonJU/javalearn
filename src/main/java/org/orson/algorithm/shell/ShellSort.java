@@ -3,6 +3,7 @@ package org.orson.algorithm.shell;
 public class ShellSort {
 
 
+    // 希尔排序
     public static void main(String[] args) {
 
         int[] arr = {6, 8, 1, 3, 9, 2};
@@ -23,24 +24,22 @@ public class ShellSort {
 
     public void sort_1(int[] arr) {
 
-        int incr = arr.length;
+        int gap = arr.length;
 
 
-        int i, j;
+        do{
+            gap = gap/3 + 1;
 
-        do {
-            incr = incr/10 + 1;
-            for(i = incr; i < arr.length; i++) {
+            for(int i = gap; i <= arr.length - 1; i++) {
                 int temp = arr[i];
-
-                for(j = i - incr; j >= 0 && arr[j] > temp; j = j - incr) {
-                    arr[j + incr] = arr[j];
+                int j = i - gap;
+                for(; j >= 0 && arr[j] > temp; j = j - gap) {
+                    arr[j + gap] = arr[j];
                 }
-                arr[j + incr] = temp;
-
+                arr[j + gap] = temp;
             }
 
-        }while(incr > 1);
+        }while(gap > 1);
 
     }
 }
