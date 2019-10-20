@@ -48,4 +48,29 @@ public class ThreadSpec {
         System.out.println("end join");
 
     }
+
+
+    @Test
+    public void should_not_throw_inturrpted_exception_if_has_not_process_any_interrupted_methods() throws InterruptedException {
+
+
+        Thread thread = new Thread(() -> {
+            int i = 0;
+            while(true) {
+                System.out.println("i am sleeping");
+            }
+        });
+
+        thread.start();
+
+
+        thread.interrupt();
+
+
+        thread.join();
+
+        System.out.println("done");
+
+
+    }
 }
