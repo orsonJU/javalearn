@@ -22,7 +22,9 @@ public class BubboSort {
     }
 
     public void sort(int[] arr) {
+        // 外层的i是指冒泡排序已经拍好的数字个数
         for(int i = 0; i < arr.length - 1; i++) {
+            // 内层的j是从左往右不断重复执行冒泡
             for(int j = 0; j < arr.length - 1 - i; j++) {
                 if(arr[j] > arr[j+1]) {
                     swap(arr, j, j + 1);

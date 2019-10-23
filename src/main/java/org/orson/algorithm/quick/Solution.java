@@ -36,24 +36,33 @@ public class Solution {
     public int partition(int[] arr, int left, int right) {
 
         int pivot = left;
+        int temp = arr[pivot];
 
         while(left < right) {
 
 
-            while((left < right) && arr[right] >= arr[pivot]) {
+            while((left < right) && arr[right] >= temp) {
                 right--;
             }
 
-            swap(arr, pivot, right);
-
-            while((left < right) && arr[left] <= arr[pivot]) {
+            if(left < right) {
+                arr[left] = arr[right];
                 left++;
             }
 
-            swap(arr, pivot, left);
+
+            while((left < right) && arr[left] <= temp) {
+                left++;
+            }
+
+            if(left < right) {
+                arr[right] = arr[left];
+                right--;
+            }
 
         }
-        return pivot;
+        arr[left] = temp;
+        return left;
     }
 
     private void swap(int[] arr, int i, int j) {
