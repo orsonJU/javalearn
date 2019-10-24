@@ -5,20 +5,11 @@ public class HeapSort {
 
     public static void main(String[] args) {
 
-        int[] arr = {6, 8, 1, 3, 9, 2};
+        int[] arr = {6, 8, 1, 3, 9, 2, 5, 4, 0};
 
+        HeapSort app = new HeapSort();
+        app.sort_1(arr);
 
-        int k = arr.length;
-
-        while (k > 0) {
-            int key = arr[k - 1];
-            int parent = (k - 1) >>> 1;
-            int e = arr[parent];
-            if (key >= parent)
-                break;
-            arr[k] = e;
-            k = parent;
-        }
 
         for(int i = 0; i < arr.length; i++) {
             System.out.print(arr[i] + ", ");
@@ -45,12 +36,12 @@ public class HeapSort {
 
         for(int node = len/2; node >= 0; node--) {
 
-            left = (node << 1);
-            right = (node << 1);
-            if((left < len) && arr[left] > arr[node]) {
+            left = (node << 1) + 1;
+            right = (node << 1) + 2;
+            if((left <= len) && arr[left] > arr[node]) {
                 this.swap(arr, node, left);
             }
-            if((right < len) && arr[right] > arr[node]) {
+            if((right <= len) && arr[right] > arr[node]) {
                 this.swap(arr, node, right);
             }
         }
