@@ -8,7 +8,7 @@ public class HeapSort {
         int[] arr = {6, 8, 1, 3, 9, 2, 5, 4, 0};
 
         HeapSort app = new HeapSort();
-        app.sort_1(arr);
+        app.sort(arr);
 
 
         for(int i = 0; i < arr.length; i++) {
@@ -16,37 +16,35 @@ public class HeapSort {
         }
     }
 
+    public void sort(int[] arr) {
+        // 核心，构造大顶堆
+        // 二叉树的特性： 节点n, 它的左孩子是2n + 1， 有孩子是  2n + 2
 
-
-    public void sort_1(int[] arr) {
-
-        for(int len = arr.length - 1; len >= 0; len--) {
-
-            this.reBuild(arr, len);
-
-
-            int temp = arr[len];
-            arr[len] = arr[0];
-            arr[0] = temp;
+        // 变量i控制堆尾巴已经拍好顺序的元素个数
+        for(int i = arr.length - 1; i > 0; i--) {
+            rebuild(arr, 0, i);
+            swap(arr, 0, i);
         }
     }
 
-    private void reBuild(int[] arr, int len) {
-        int left, right;
+    private void rebuild(int[] arr, int start, int end) {
 
-        for(int node = len/2; node >= 0; node--) {
+        int lastNode = (start + end) >> 1;
 
-            left = (node << 1) + 1;
-            right = (node << 1) + 2;
-            if((left <= len) && arr[left] > arr[node]) {
-                this.swap(arr, node, left);
+        for(int i = lastNode; i >= 0; i--) {
+            int left = (i << 1) + 1;
+            int right = left + 1;
+
+            if(left <= end && arr[left] > arr[i]) {
+                swap(arr, left, i);
             }
-            if((right <= len) && arr[right] > arr[node]) {
-                this.swap(arr, node, right);
+
+            if(right <= end && arr[right] > arr[i]) {
+                swap(arr, right, i);
             }
         }
-
     }
+
 
     private void swap(int[] arr, int i, int j) {
         int temp = arr[i];
