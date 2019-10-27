@@ -17,47 +17,49 @@ public class Merge {
 
     }
 
-    private void sort(int[] arr, int left, int right, int[] temp) {
+
+    // 合并排序和 快速排序有些许相似之处
+    public void sort(int[] origin, int left, int right, int[] dest) {
 
         int mid = (left + right) >> 1;
+
         if(left < right) {
-
-            sort(arr, left, mid, temp);
-            sort(arr, mid + 1, right, temp);
-
-            merge(arr, left, mid, right, temp);
+            sort(origin, left, mid, dest);
+            sort(origin, mid + 1, right, dest);
+            merge(origin, left, mid, right, dest); // (1)
         }
-
 
     }
 
-    private void merge(int[] arr, int left, int mid, int right, int[] temp) {
+    private void merge(int[] origin, int left, int mid, int right, int[] dest) {
+        // 核心，实现merge函数
+        int low = left;
+        int high = mid + 1; // (2)
+        int i = left;
+        while( low <= mid && high <= right) {
 
-        int point = left;
-        int low = left, high = mid + 1;
-        while(low <= mid && high <= right) {
-
-            if(arr[low] < arr[high]) {
-                temp[point++] = arr[low++];
+            if(origin[low] < origin[high]) {
+                dest[i++] = origin[low++];
             }else {
-                temp[point++] = arr[high++];
+                dest[i++] = origin[high++];   // (3)
             }
 
         }
 
+
         while(low <= mid) {
-            temp[point++] = arr[low++];
+            dest[i++] = origin[low++];
         }
 
         while(high <= right) {
-            temp[point++] = arr[high++];
-        }
-
-        for(int i = left; i <= right; i++) {
-            arr[i] = temp[i];
+            dest[i++] = origin[high++];
         }
 
 
+        // 核心，排序完毕后，要复制会源头
+        for(int point = left; point <= right; point++) {
+            origin[point] = dest[point];
+        }
 
     }
 }
