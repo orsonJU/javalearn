@@ -19,13 +19,9 @@ public class Solution {
 
 
     public void sort(int[] arr, int left, int right) {
-
-        int pivot = 0;
-        if(left < right) {
-
-            pivot = partition(arr, left, right);
-
-
+        //
+        if (left < right) {
+            int pivot = partition(arr, left, right);
             sort(arr, left, pivot);
             sort(arr, pivot + 1, right);
         }
@@ -34,24 +30,22 @@ public class Solution {
 
 
     public int partition(int[] arr, int left, int right) {
-
-        int pivot = left;
-        int temp = arr[pivot];
+        int pivot = arr[left];
 
         while(left < right) {
 
 
-            while((left < right) && arr[right] >= temp) {
+            while( arr[right] >= pivot && right > left) {
                 right--;
             }
 
-            if(left < right) {
+            if(right > left) {
                 arr[left] = arr[right];
                 left++;
             }
 
 
-            while((left < right) && arr[left] <= temp) {
+            while(arr[left] <= pivot && left < right) {
                 left++;
             }
 
@@ -59,11 +53,12 @@ public class Solution {
                 arr[right] = arr[left];
                 right--;
             }
-
         }
-        arr[left] = temp;
+
+        arr[left] = pivot;
         return left;
     }
+
 
     private void swap(int[] arr, int i, int j) {
         int temp = arr[i];
