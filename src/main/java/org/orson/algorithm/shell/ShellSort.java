@@ -11,7 +11,7 @@ public class ShellSort {
 
         ShellSort app = new ShellSort();
 
-        app.sort_1(arr);
+        app.sort(arr);
 
 
         for(int i = 0; i < arr.length; i++) {
@@ -20,26 +20,29 @@ public class ShellSort {
 
     }
 
+    public void sort(int[] arr) {
 
+        // 核心，希尔排序要一个起始的间隔大小，一般是数组的1/3
 
-    public void sort_1(int[] arr) {
+        int gap = arr.length - 1;
+        do {
 
-        int gap = arr.length;
-
-
-        do{
             gap = gap/3 + 1;
 
+            // 变量i负责控制从第一个gap的位置开始，从左往右每个间隔进行比较，起始是一种小区间内的冒泡
             for(int i = gap; i <= arr.length - 1; i++) {
-                int temp = arr[i];
+
                 int j = i - gap;
-                for(; j >= 0 && arr[j] > temp; j = j - gap) {
+                int temp = arr[i];
+                while(j >= 0 && temp < arr[j]) {
                     arr[j + gap] = arr[j];
+                    j -= gap;
                 }
                 arr[j + gap] = temp;
             }
 
-        }while(gap > 1);
+
+        } while (gap > 1);
 
     }
 }
