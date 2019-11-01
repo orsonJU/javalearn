@@ -1,4 +1,4 @@
-package org.orson.algorithm.bubbo;
+package org.orson.algorithm.sort.bubbo;
 
 
 // 冒泡排序

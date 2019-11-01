@@ -1,4 +1,4 @@
-package org.orson.algorithm.merge;
+package org.orson.algorithm.sort.merge;
 
 public class Merge {
 

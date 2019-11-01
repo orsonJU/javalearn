@@ -1,4 +1,4 @@
-package org.orson.algorithm.heap;
+package org.orson.algorithm.sort.heap;
 
 public class HeapSort {
 

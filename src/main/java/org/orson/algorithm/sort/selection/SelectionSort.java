@@ -1,4 +1,4 @@
-package org.orson.algorithm.selection;
+package org.orson.algorithm.sort.selection;
 
 //选择排序
 public class SelectionSort {

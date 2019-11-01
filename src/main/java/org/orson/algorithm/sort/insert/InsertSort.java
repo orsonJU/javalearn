@@ -1,4 +1,4 @@
-package org.orson.algorithm.insert;
+package org.orson.algorithm.sort.insert;
 
 //插入排序
 public class InsertSort {

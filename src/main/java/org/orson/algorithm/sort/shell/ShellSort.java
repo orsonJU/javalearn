@@ -1,4 +1,4 @@
-package org.orson.algorithm.shell;
+package org.orson.algorithm.sort.shell;
 
 public class ShellSort {
 

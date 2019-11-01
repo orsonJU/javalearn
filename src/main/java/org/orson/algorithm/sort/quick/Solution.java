@@ -1,4 +1,4 @@
-package org.orson.algorithm.quick;
+package org.orson.algorithm.sort.quick;
 
 public class Solution {
 
